@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:maxLength="25"
-            android:hint="김지연은 똑똑한가??"
+            android:hint="아이디를 입력해 주세요"
             />
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:maxLength="25"
-            android:hint="답해주세요!!!"
+            android:hint="비밀번호를 입력해주세요"
             />
 
     <LinearLayout
@@ -39,14 +39,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Yes"
-            android:text="YES"
+            android:text="sign-in"
             />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="No"
-            android:text="No"
+            android:text="sign-up"
             />
 
     </LinearLayout>
