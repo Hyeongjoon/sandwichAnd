@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.admin.sandwich.SignUpActivity"
+    >
+
+    <EditText
+        android:id="@+id/Sign_up_nick"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:maxLength="20"
+        android:hint="등록할 닉네임을 적으세요"
+        />
+
+    <EditText
+        android:id="@+id/Sign_up_email"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:maxLength="25"
+        android:hint="등록할 이메일을 적으세요"
+        />
+
+    <EditText
+        android:id="@+id/Sign_up_password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:maxLength="25"
+        android:hint="등록할 비밀번호를 적으세요"
+        />
+
+    <EditText
+        android:id="@+id/Sign_up_password_chk"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:maxLength="25"
+        android:hint="비밀번호 확인"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Sign_up_register"
+            android:text="가입하기"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Sign_up_login"
+            android:text="로그인 화면으로"
+            />
+
+    </LinearLayout>
+</LinearLayout>

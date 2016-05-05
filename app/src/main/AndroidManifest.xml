@@ -19,7 +19,7 @@ android:theme="@style/AppTheme" >
 </activity>
 
     <activity android:name=".LoginActivity"/>
-    <activity android:name=".NoActivity"/>
+    <activity android:name=".SignUpActivity"/>
     <activity android:name=".SocketIOActivity"/>
     <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
