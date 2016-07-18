@@ -10,7 +10,9 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,21 +35,21 @@ public class MainActivity extends AppCompatActivity {
     Handler mHandler = null;
     AlertDialog dialog;
 
-    private Socket mSocket;
+/*    private Socket mSocket;
     {
         try {
             mSocket = IO.socket("http://192.168.0.43:3001");
         } catch (URISyntaxException e) {
             System.out.println(e);
         }
-    }
+    }*/
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
 
-    private Emitter.Listener resultLogin = new Emitter.Listener() {
+   private Emitter.Listener resultLogin = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
 
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void createDialog(){
+    /*private void createDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);     // 여기서 this는 Activity의 this
         // 여기서 부터는 알림창의 속성 설정
         builder.setTitle("로그인 오류")        // 제목 설정
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         mHandler = new Handler();
         dialog = builder.create();    // 알림창 객체 생성
         // 알림창 띄우기
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,40 +106,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        createDialog();
-        mSocket.on("resultLogin" , resultLogin);
-        mSocket.connect();
+        //createDialog();
+        /*mSocket.on("resultLogin" , resultLogin);
+        mSocket.connect();*/
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void Yes(View view){
-        EditText emailText = (EditText)findViewById(R.id.LoginEmail);
-        EditText passwordText = (EditText)findViewById(R.id.LoginPassword);
-        String email = emailText.getText().toString().trim();
-        String password = passwordText.getText().toString().trim();
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        if(!email.matches(emailPattern)){
-            Toast.makeText(getApplicationContext() , "invalid email" ,Toast.LENGTH_SHORT).show();
-        } else if(password.length()==0){
-            Toast.makeText(getApplicationContext() , "password is empty" ,Toast.LENGTH_SHORT).show();
-        } else{
-            JSONObject inform = new JSONObject();
-            try{
-            inform.put("email" , email);
-            inform.put("password" , password);
-            } catch (JSONException e){
-                System.out.println(e);
-            }
-            mSocket.emit("loginChk", inform);
-            pDialog = ProgressDialog.show(this, "Login.....", "Please wait", true, true);
-        }
-    }
+    public void MainButtonClick(View v){
+        switch(v.getId()) {
+            case R.id.signIn_login: {
+                EditText emailText = (EditText)findViewById(R.id.LoginEmail);
+                EditText passwordText = (EditText)findViewById(R.id.LoginPassword);
+                String email = emailText.getText().toString().trim();
+                String password = passwordText.getText().toString().trim();
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                if(!email.matches(emailPattern)){
+                    Toast.makeText(getApplicationContext() , "invalid email" ,Toast.LENGTH_SHORT).show();
+                } else if(password.length()==0){
+                    Toast.makeText(getApplicationContext() , "password is empty" ,Toast.LENGTH_SHORT).show();
+                } else{
+                    JSONObject inform = new JSONObject();
+                    try{
+                        inform.put("email" , email);
+                        inform.put("password" , password);
+                    } catch (JSONException e){
+                        System.out.println(e);
+                    }
+                    //        mSocket.emit("loginChk", inform);
+                    pDialog = ProgressDialog.show(this, "Login.....", "Please wait", true, true);
 
-    public void No(View view){
-        Intent intent = new Intent(getApplicationContext() , SignUpActivity.class);
-        startActivity(intent);
-        finish();
-        return;
+            }
+        } case R.id.signIn_signUp : {
+                Intent temp = new Intent();
+                Intent intent = new Intent(getApplicationContext() , SignUpActivity.class);
+                startActivity(intent);
+                return;
+            }
+
+        }
     }
 
     @Override

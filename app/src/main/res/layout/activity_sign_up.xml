@@ -62,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Sign_up_login"
+            android:onClick="temp"
             android:text="로그인 화면으로"
             />
 
